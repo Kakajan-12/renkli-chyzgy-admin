@@ -18,7 +18,7 @@ const config: DaisyConfig = {
     },
     plugins: [daisyui],
     daisyui: {
-        themes: ["light"], // ✅ только светлая тема
+        themes: ["light"],
     },
 }
 
