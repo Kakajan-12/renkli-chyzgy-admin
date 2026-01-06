@@ -140,25 +140,42 @@ const ViewProject = () => {
                                     className="rounded"
                                 />
                             )}
-                            <div>
-                                <strong>Category:</strong>
-                                <p>{data.category}</p>
-                            </div>
                         </div>
 
                         <div className="flex-1 space-y-10 divide-y-1">
                             <div>
-                                {data.title && (
-                                    <div><strong>Title:</strong>
-                                        <div dangerouslySetInnerHTML={{__html: data.title}}/>
-                                    </div>
-                                )}
-                                {data.text && (
-                                    <div><strong>Text:</strong>
-                                        <div dangerouslySetInnerHTML={{__html: data.text}}/>
-                                    </div>
-                                )}
+                                <strong>Category:</strong>
+                                <p>{data.category}</p>
                             </div>
+                            {data.title && (
+                                <div><strong>Title:</strong>
+                                    <div dangerouslySetInnerHTML={{__html: data.title}}/>
+                                </div>
+                            )}
+                            {data.text && (
+                                <div><strong>Text:</strong>
+                                    <div dangerouslySetInnerHTML={{__html: data.text}}/>
+                                </div>
+                            )}
+                            <div className="flex space-x-4">
+                                <div>
+                                    <strong>Category:</strong>
+                                    <p>{data.category}</p>
+                                </div>
+                                <div>
+                                    <strong>Director:</strong>
+                                    <p>{data.director}</p>
+                                </div>
+                                <div>
+                                    <strong>Designer:</strong>
+                                    <p>{data.designer}</p>
+                                </div>
+                                <div>
+                                    <strong>Date:</strong>
+                                    <p>{data.date ? new Date(data.date).toLocaleDateString('ru-RU') : 'No date'}</p>
+                                </div>
+                            </div>
+
                         </div>
 
                     </div>

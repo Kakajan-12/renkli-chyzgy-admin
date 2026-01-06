@@ -91,7 +91,7 @@ const Projects = () => {
             <div className="flex-1 p-6 ml-64">
                 <TokenTimer/>
 
-                <div className="max-w-6xl mx-auto">
+                <div className=" mx-auto">
                     <div className="mb-8 flex justify-between items-center">
                         <div>
                             <h1 className="text-2xl font-bold text-gray-900">Projects</h1>
@@ -137,7 +137,7 @@ const Projects = () => {
                                                 #{project.id}
                                             </td>
                                             <td className="px-6 py-4 whitespace-nowrap">
-                                                <div className="relative w-16 h-16 rounded-lg overflow-hidden border border-gray-200">
+                                                <div className="relative w-32 h-32 rounded-lg overflow-hidden border border-gray-200">
                                                     <img
                                                         src={fixImageUrl(project.image)}
                                                         alt={`Project ${project.id}`}

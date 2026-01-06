@@ -12,6 +12,9 @@ const AddProject = () => {
     const [title, setTitle] = useState('');
     const [text, setText] = useState('');
     const [category_id, setCategory] = useState('');
+    const [director, setDirector] = useState('');
+    const [designer, setDesigner] = useState('');
+    const [date, setDate] = useState('');
     const [cat, setCat] = useState<
         { id: number; category: string;}[]
     >([]);
@@ -52,6 +55,9 @@ const AddProject = () => {
         formData.append('title', title ?? '');
         formData.append('text', text ?? '');
         formData.append('category_id', category_id ?? '');
+        formData.append('director', director ?? '');
+        formData.append('designer', designer ?? '');
+        formData.append('date', date ?? '');
 
         try {
             const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/projects`, {
@@ -69,6 +75,9 @@ const AddProject = () => {
                 setTitle('');
                 setText('');
                 setCategory('');
+                setDirector('');
+                setDesigner('');
+                setDate('');
                 router.push('/admin/projects');
             } else {
                 const errorText = await response.text();
@@ -131,7 +140,38 @@ const AddProject = () => {
                                 </select>
                             </div>
                         </div>
-
+                        <div className="flex w-full space-x-4">
+                            <div className="mb-4 w-full">
+                                <label className="block text-gray-700 font-semibold mb-2">Director:</label>
+                                <input
+                                    value={director}
+                                    onChange={(e) => setDirector(e.target.value)}
+                                    type="text"
+                                    required
+                                    className="border border-gray-300 rounded p-2 w-full"
+                                />
+                            </div>
+                            <div className="mb-4 w-full">
+                                <label className="block text-gray-700 font-semibold mb-2">Designer:</label>
+                                <input
+                                    value={designer}
+                                    onChange={(e) => setDesigner(e.target.value)}
+                                    type="text"
+                                    required
+                                    className="border border-gray-300 rounded p-2 w-full"
+                                />
+                            </div>
+                            <div className="mb-4">
+                                <label className="block text-gray-700 font-semibold mb-2">Date:</label>
+                                <input
+                                    value={date}
+                                    onChange={(e) => setDate(e.target.value)}
+                                    type="date"
+                                    required
+                                    className="border border-gray-300 rounded p-2 w-full"
+                                />
+                            </div>
+                        </div>
                         {isClient && (
                             <>
                                 <div className="tabs tabs-lift">

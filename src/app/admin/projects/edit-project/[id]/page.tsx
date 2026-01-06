@@ -6,7 +6,6 @@ import TipTapEditor from '@/Components/TipTapEditor';
 import Sidebar from "@/Components/Sidebar";
 import TokenTimer from "@/Components/TokenTimer";
 import {DocumentIcon} from "@heroicons/react/16/solid";
-import Image from "next/image";
 
 const EditProject = () => {
     const {id} = useParams();
@@ -17,6 +16,9 @@ const EditProject = () => {
         text: string;
         image: string;
         category_id: number;
+        director: string;
+        designer: string;
+        date: string;
     };
 
     const [data, setData] = useState<ProjectData>({
@@ -24,6 +26,9 @@ const EditProject = () => {
         text: '',
         image: '',
         category_id: 0,
+        director: '',
+        designer: '',
+        date: '',
     });
     const [imageFile, setImageFile] = useState<File | null>(null);
     const [loading, setLoading] = useState(true);
@@ -92,6 +97,9 @@ const EditProject = () => {
             formData.append('title', data.title);
             formData.append('text', data.text);
             formData.append('category_id', String(data.category_id));
+            formData.append('director', data.director);
+            formData.append('designer', data.designer);
+            formData.append('date', data.date);
 
             if (imageFile) {
                 formData.append('image', imageFile);
@@ -185,6 +193,39 @@ const EditProject = () => {
                             </div>
                         </div>
 
+                        <div className="flex w-full space-x-4">
+                            <div className="mb-4 w-full">
+                                <label className="block text-gray-700 font-semibold mb-2">Director:</label>
+                                <input
+                                    name="director"
+                                    value={data.director}
+                                    onChange={(e) => handleEditorChange('director', e.target.value)}
+                                    type="text"
+                                    required
+                                    className="border border-gray-300 rounded p-2 w-full"
+                                />
+                            </div>
+                            <div className="mb-4 w-full">
+                                <label className="block text-gray-700 font-semibold mb-2">Designer:</label>
+                                <input
+                                    value={data.designer}
+                                    onChange={(e) => handleEditorChange('designer', e.target.value)}
+                                    type="text"
+                                    required
+                                    className="border border-gray-300 rounded p-2 w-full"
+                                />
+                            </div>
+                            <div className="mb-4">
+                                <label className="block text-gray-700 font-semibold mb-2">Date:</label>
+                                <input
+                                    value={data.date}
+                                    onChange={(e) => handleEditorChange('date', e.target.value)}
+                                    type="date"
+                                    required
+                                    className="border border-gray-300 rounded p-2 w-full"
+                                />
+                            </div>
+                        </div>
                         <div className="tabs tabs-lift">
                             <input type="radio" name="my_tabs_3" className="tab" aria-label="Project" defaultChecked/>
                             <div className="tab-content bg-base-100 border-base-300 p-6">

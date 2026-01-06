@@ -95,7 +95,7 @@ const AddGallery = () => {
                             </div>
                             <div className="w-full">
                                 <label className="block text-gray-700 font-semibold mb-2">
-                                    Blog:
+                                    Project:
                                 </label>
                                 <select
                                     id="project_id"
